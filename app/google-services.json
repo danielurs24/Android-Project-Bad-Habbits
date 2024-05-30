@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "377802313973",
+    "project_id": "bad-habbits",
+    "storage_bucket": "bad-habbits.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377802313973:android:9e340637027888935c35bc",
+        "android_client_info": {
+          "package_name": "com.unibuc.badhabbits"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr143Pmp-EVehQsrCAIJgXjSqRXC68wpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
