@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/textViewHabit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Habit name"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/textViewDaysCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Days "
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonEditHabit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Edit" />
+
+        <Button
+            android:id="@+id/buttonDeleteHabit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete" />
+    </LinearLayout>
+
+</LinearLayout>

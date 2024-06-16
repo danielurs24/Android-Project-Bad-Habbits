@@ -7,17 +7,33 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/mainTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Bad Habits!!!"
-        android:textSize="24sp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp" />
+        android:layout_marginBottom="32dp"
+        android:text="Welcome to Bad Habits!!!"
+        android:textSize="24sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHabits"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonAddHabit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Add Habit"/>
 
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Logout"
-        android:layout_marginTop="32dp" />
+        android:layout_gravity="bottom"/>
 </LinearLayout>
