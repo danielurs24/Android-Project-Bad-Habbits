@@ -14,11 +14,11 @@ import java.util.List;
 public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHolder> {
 
     private List<Habit> habitList;
-    private HomeActivity homeActivity;
+    private HomeFragment homeFragment;
 
-    public HabitAdapter(List<Habit> habitList, HomeActivity homeActivity) {
+    public HabitAdapter(List<Habit> habitList, HomeFragment homeFragment) {
         this.habitList = habitList;
-        this.homeActivity = homeActivity;
+        this.homeFragment = homeFragment;
     }
 
     @NonNull
@@ -33,7 +33,7 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
         Habit habit = habitList.get(position);
         holder.textViewHabit.setText(habit.getName());
         holder.textViewDaysCount.setText("Days: " + habit.getDaysCount());
-        holder.editButton.setOnClickListener(view -> homeActivity.showEditHabitDialog(position));
+        holder.editButton.setOnClickListener(view -> homeFragment.showEditHabitDialog(position));
 
         holder.deleteButton.setOnClickListener(view -> {
             habitList.remove(position);
@@ -42,7 +42,6 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
         });
     }
 
-
     @Override
     public int getItemCount() {
         return habitList.size();
@@ -50,8 +49,7 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
 
     public static class HabitViewHolder extends RecyclerView.ViewHolder {
         TextView textViewHabit, textViewDaysCount;
-        Button editButton, deleteButton;;
-
+        Button editButton, deleteButton;
 
         public HabitViewHolder(@NonNull View itemView) {
             super(itemView);
