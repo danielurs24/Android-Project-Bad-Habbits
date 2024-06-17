@@ -20,6 +20,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class RewardsFragment extends Fragment {
 
@@ -29,6 +30,7 @@ public class RewardsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rewards, container, false);
+
 
         rewardList = new ArrayList<>();
         rewardList.add(new Reward("O intrare gratuita in sectiunea The Palm pentru un Adult la Therme Bucuresti", 7));
@@ -97,23 +99,33 @@ public class RewardsFragment extends Fragment {
     }
 
     private boolean canCollectReward(int requiredDays) {
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("HabitsPrefs", Context.MODE_PRIVATE);
-        Map<String, ?> allEntries = sharedPreferences.getAll();
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("habits", Context.MODE_PRIVATE);
+        List<Habit> habitList = new ArrayList<>();
+        int habitCount = sharedPreferences.getInt("habitCount", 0);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        for (int i = 0; i < habitCount; i++) {
+            String habitName = sharedPreferences.getString("habitName_" + i, null);
+            String habitStartDateStr = sharedPreferences.getString("habitStartDate_" + i, null);
+
+            if (habitName != null && habitStartDateStr != null) {
+                LocalDate habitStartDate = LocalDate.parse(habitStartDateStr);
+                habitList.add(new Habit(habitName, habitStartDate));
+            }
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate currentDate = LocalDate.now();
 
-        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            if (entry.getKey().endsWith("_startDate")) {
-                String startDateString = (String) entry.getValue();
-                LocalDate startDate = LocalDate.parse(startDateString, formatter);
-                int daysBetween = (int) ChronoUnit.DAYS.between(startDate, currentDate);
-
-                if (daysBetween >= requiredDays) {
-                    return true;
-                }
+        for (Habit habit : habitList) {
+            String startDateString = habit.getStartDate().toString();
+            LocalDate startDate = LocalDate.parse(startDateString, formatter);
+            int daysBetween = (int) ChronoUnit.DAYS.between(startDate, currentDate);
+            if (daysBetween >= requiredDays) {
+                return true;
             }
+
         }
         return false;
     }
+
 }

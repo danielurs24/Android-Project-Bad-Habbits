@@ -11,6 +11,12 @@ public class Reward {
         this.isCollected = false;
     }
 
+    public Reward(String name, int requiredDays, boolean isCollected) {
+        this.name = name;
+        this.requiredDays = requiredDays;
+        this.isCollected = isCollected;
+    }
+
     public String getName() {
         return name;
     }
